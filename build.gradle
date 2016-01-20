@@ -52,6 +52,10 @@ ext {
     }
 }
 
+test {
+    maxParallelForks = Runtime.runtime.availableProcessors()
+}
+
 group = 'net.serenity-bdd.maven.plugins'
 
 task wrapper(type: Wrapper) {
@@ -254,6 +258,7 @@ tasks.withType(JavaCompile) {
 tasks.withType(JavaCompile) {
     options.compilerArgs << "-Xlint:-options"
 }
+
 if (JavaVersion.current().isJava8Compatible()) {
     allprojects {
         tasks.withType(Javadoc) {
